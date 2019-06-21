@@ -182,8 +182,8 @@ subnet $E_REDE netmask $NETMASK {
 	option subnet-mask		$NETMASK;
 	range				$END_INICIAL $END_FINAL;
 	filename			"/pxelinux.0";
-	default-lease-time		21600;
-	max-lease-time			43200;
+	default-lease-time		86400;
+	max-lease-time			172800;
 	next-server			$GATEWAY;
 }
 
