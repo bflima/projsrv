@@ -161,6 +161,7 @@ zone "$REVERSO.in-addr.arpa" {
 EOF
 ######################################## DHCP #####################################
 IP_A=$(hostname -I)
+IP_A=$(echo $IP_A | sed s'/ //')
 cat > $DHCP << EOF
 ddns-update-style interim;
 ddns-updates on;
