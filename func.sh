@@ -241,6 +241,8 @@ EOF
     sleep 1
     chown root:named /etc/rndc.key
     chmod 640 /etc/rndc.key
+    yum remove dhclient -y
+    sleep 1
     systemctl restart named
     systemctl restart dhcpd
     echo "Configuracao realizada" > $FILE
