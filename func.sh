@@ -204,7 +204,7 @@ SECRET=$(cat /etc/rndc.key | grep secret | awk '{print $2}' | sed s'/"//g')
 echo "$SECRET"
 sleep 5
 
-sed -i "s/secret.*/secret $SECRET/g" /etc/dhcp/dhcpd.conf
+sed -i "s|secret.*|secret $SECRET|g" /etc/dhcp/dhcpd.conf
 
 ############################### ZONAS #########################################
 #@   IN  SOA @   $ZONA $H_NAME.$ZONA. (
