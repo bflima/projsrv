@@ -199,7 +199,11 @@ zone $REVERSO.in-addr.arpa. {
 	key rndc-key;
 }
 EOF
-SECRET=$(cat /etc/rndc.key |grep secret |cut -d " " -f 2 |sed s'/"//g')
+
+SECRET=$(cat /etc/rndc.key | grep secret | awk '{print $2}' | sed s'/"//g')
+echo "$SECRET"
+sleep 5
+
 sed -i "s/secret.*/secret $SECRET/g" /etc/dhcp/dhcpd.conf
 
 ############################### ZONAS #########################################
