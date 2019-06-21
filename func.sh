@@ -158,6 +158,7 @@ zone "$REVERSO.in-addr.arpa" {
 };
 EOF
 ######################################## DHCP #####################################
+IP_A=$(hostname -I)
 cat > $DHCP << EOF
 ddns-update-style interim;
 ddns-updates on;
@@ -176,7 +177,7 @@ set vendorclass = option vendor-class-identifier;
 subnet $E_REDE netmask $NETMASK {
 	interface $NOME_REDE;
 	option routers			$GATEWAY;
-	option domain-name-servers	$GATEWAY;
+	option domain-name-servers	$IP_A, 8.8.8.8;
 	option domain-name		"$ZONA";
 	option subnet-mask		$NETMASK;
 	range				$END_INICIAL $END_FINAL;
