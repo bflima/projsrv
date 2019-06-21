@@ -96,6 +96,8 @@ _PRINCIPAL()
   FILE="/tmp/principal.txt"
   if [ ! -e "$FILE" ] ; then
   #echo "include \"/etc/rndc.key\";" >> /etc/named.conf
+    systemctl restart named
+    
     cp /var/named/named.empty $ZONE
     cp /var/named/named.empty $REVE
     chown named.named /var/named/dynamic/*
